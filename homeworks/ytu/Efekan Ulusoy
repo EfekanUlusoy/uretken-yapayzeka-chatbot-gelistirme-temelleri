@@ -1,0 +1,23 @@
+import string
+
+def shift(text, shift_amount):
+    alphabet = string.ascii_lowercase
+    shifted = alphabet[shift_amount:] + alphabet[:shift_amount]
+    table = str.maketrans(alphabet + alphabet.upper(), shifted + shifted.upper())
+    return text.translate(table)
+
+şifre = shift("ymj vznhp gwtbs ktc ozrux tajw ymj qfed itl",-5)
+print(şifre)
+
+def main():
+    while True:
+        choice = input("Yazıyı Şifreleme (S) / Yazıyı Çözme (C)").strip().lower()
+        if choice == 's':
+            print("Şifreli metin:", shift(input("Metni girin: "), 5))
+        elif choice == 'c':
+            print("Orijinal metin:", shift(input("Metni girin: "), -5))
+        else:
+            print("HATA!")
+
+if __name__ == "__main__":
+    main()
